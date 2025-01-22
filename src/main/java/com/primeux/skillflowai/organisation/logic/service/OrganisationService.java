@@ -1,15 +1,26 @@
 package com.primeux.skillflowai.organisation.logic.service;
 
+import com.primeux.skillflowai.organisation.data.repository.OrganisationRepository;
+import com.primeux.skillflowai.organisation.logic.mapper.OrganisationMapper;
 import com.primeux.skillflowai.organisation.logic.model.Organisation;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public interface OrganisationService {
+@Service
+@RequiredArgsConstructor
+public class OrganisationService {
+
+    private final OrganisationRepository organisationRepository;
+    private final OrganisationMapper organisationMapper;
 
     /**
-     * Retrieves a list of all organisations.
-     *
-     * @return a list of Organisation objects representing all available organisations
+     * {@inheritDoc}
      */
-    List<Organisation> findAllOrganisations();
+    public List<Organisation> findAllOrganisations() {
+        return organisationRepository.findAll().stream().map(organisationMapper::toOrganisation).collect(Collectors.toCollection(ArrayList::new));
+    }
 }
