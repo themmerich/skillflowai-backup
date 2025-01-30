@@ -1,6 +1,6 @@
-package com.primeux.skillflowai.organisation.data.entity;
+package com.primeux.skillflowai.organization.data.entity;
 
-import com.primeux.skillflowai.user.data.UserEntity;
+import com.primeux.skillflowai.user.data.entity.UserEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -14,8 +14,8 @@ import org.springframework.data.jpa.domain.AbstractAuditable;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "organisation")
-public class OrganisationEntity extends AbstractAuditable<UserEntity, Long> {
+@Table(name = "organization")
+public class OrganizationEntity extends AbstractAuditable<UserEntity, Long> {
 
     @NotBlank
     private String name;
